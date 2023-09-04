@@ -10,9 +10,8 @@ app.get('/' , (req , res) => {
     return res.send("Started Application")
 })
 
+// this is controller which is currently acting as a account provider 
 app.get('/balanceSheet' , ( req , res ) => {
-
-
     return res.status(200).json({ sheet })
 })
 
@@ -39,10 +38,14 @@ app.post('/submitApplication' , (req , res) => {
         }
     }
 
+
+    // this is the final object which will be sent to the decision system
     const finalObj = {
         ...businessDetails , preAssessment , profitOrLossSummary : profitOrLoss , averageAssets 
     }
 
+
+    
     console.log(finalObj)
     return res.status(200).send("submitted application")
 
